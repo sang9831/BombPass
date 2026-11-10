@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: bomb-pass
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/bombpass}
+    username: ${DATABASE_USERNAME:bombpass}
+    password: ${DATABASE_PASSWORD:bombpass}
+    hikari:
+      maximum-pool-size: 5
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+      ssl:
+        enabled: ${REDIS_SSL:false}
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USERNAME:guest}
+    password: ${RABBITMQ_PASSWORD:guest}
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+server:
+  port: ${SERVER_PORT:8080}
